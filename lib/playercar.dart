@@ -1,33 +1,26 @@
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
-import 'package:flame/events.dart'; // ✅ required
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+import 'cargame.dart';
 
-
-class PlayerCar extends SpriteComponent with KeyboardHandler, HasGameRef {
+class PlayerCar extends SpriteComponent with KeyboardHandler, HasGameRef<CarGame> {
   double speed = 0;
   final double maxSpeed = 200;
-  final double acceleration = 150;
-
-  late Vector2 gameSize;
-
-  @override
-  Future<void> onMount() async {
-    super.onMount();
-    gameSize = gameRef.size;
-  }
 
   @override
   void update(double dt) {
     super.update(dt);
 
+    if (!gameRef.raceStarted) return;
+
     position.x += speed * dt;
 
-    if (position.x < 0) position.x = 0;
-    if (position.x + size.x > gameSize.x) {
-      position.x = gameSize.x - size.x;
+    // Restrict going off the left side only
+    if (position.x < 0) {
+      position.x = 0;
     }
+
+    // ✅ No right-side restriction — player can win
   }
 
   @override
@@ -42,8 +35,6 @@ class PlayerCar extends SpriteComponent with KeyboardHandler, HasGameRef {
       speed = 0;
     }
 
-    return true; // ✅ returns bool, not KeyEventResult
+    return true;
   }
-
-
 }
