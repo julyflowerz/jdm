@@ -1,7 +1,6 @@
 // Core drawing and graphics from Flutter
 import 'dart:ui';
 
-// Flame game engine core
 import 'package:flame/game.dart';
 import 'package:flame/components.dart';         // For sprites and text
 import 'package:flame/events.dart';             // For tap/click/keyboard handlers
@@ -9,9 +8,9 @@ import 'package:cloud_firestore/cloud_firestore.dart'; // Firebase Firestore (da
 import 'package:flame/palette.dart';            // Predefined colors
 import 'package:flame/text.dart';               // Flame text rendering
 
-// Your custom components/services
+// Custom components/services
 import 'playercar.dart';                        // Your player car logic
-import 'scoreservice.dart';                     // Handles saving score to Firebase
+import 'leaderboard.dart';                     // Handles saving score to Firebase
 
 // Main game class
 class CarGame extends FlameGame with HasKeyboardHandlerComponents {
@@ -184,7 +183,7 @@ class PlayAgainText extends TextComponent with TapCallbacks {
     anchor: Anchor.center,
     priority: 30,
     textRenderer: TextPaint(
-      style: TextStyle(fontSize: 30, color: Color(0xFF00FF00)), // Green
+      style: TextStyle(fontSize: 30, color: Color(0xFF078407)), // Green
     ),
   );
 

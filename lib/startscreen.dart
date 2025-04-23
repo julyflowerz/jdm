@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'gamescreen.dart'; // Imports the main game screen to navigate to
 
-// StartScreen is a stateless widget shown when the app starts
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
 
@@ -13,24 +12,19 @@ class StartScreen extends StatelessWidget {
           // Background image that fills the entire screen
           Positioned.fill(
             child: Image.asset(
-              'assets/images/background.gif', // Make sure this asset exists in pubspec.yaml
-              fit: BoxFit.cover,               // Ensures it scales to cover the whole screen
+              'assets/images/background.gif',
+              fit: BoxFit.cover,
             ),
           ),
-          // Centered "Press Start" button
           Center(
             child: GestureDetector(
-              // When tapped, navigate to the actual game screen
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const GameScreen()),
-                );
+                Navigator.pushNamed(context, '/carlist');
               },
-              // The button is an image (styled like a "Start" graphic)
+              // 👇 This was misplaced before
               child: Image.asset(
-                'assets/images/start.png', // Make sure this asset exists too
-                width: 200,                // Scales the image size
+                'assets/images/start.png',
+                width: 200,
               ),
             ),
           ),

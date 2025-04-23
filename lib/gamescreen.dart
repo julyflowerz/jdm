@@ -12,7 +12,7 @@ class GameScreen extends StatelessWidget {
     // Create an instance of your custom Flame game
     final carGame = CarGame();
 
-    // 🔁 Attach a callback that runs when the game ends
+    // Attach a callback that runs when the game ends
     // Used to navigate to the leaderboard from inside the game
     carGame.onGameFinished = () {
       Navigator.push(

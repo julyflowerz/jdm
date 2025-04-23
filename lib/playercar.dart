@@ -28,7 +28,7 @@ class PlayerCar extends SpriteComponent
       position.x = 0;
     }
 
-    // 🔓 Right side is intentionally not restricted — player can win the race
+    // Right side is intentionally not restricted — player can win the race
   }
 
   // Handle keyboard input (WASD or arrow keys)
@@ -37,10 +37,13 @@ class PlayerCar extends SpriteComponent
     if (keysPressed.contains(LogicalKeyboardKey.arrowRight) ||
         keysPressed.contains(LogicalKeyboardKey.keyD)) {
       speed = maxSpeed; // Move right
-    } else if (keysPressed.contains(LogicalKeyboardKey.arrowLeft) ||
+    } else if (keysPressed.contains(LogicalKeyboardKey.arrowLeft)||
         keysPressed.contains(LogicalKeyboardKey.keyA)) {
-      speed = -maxSpeed; // Move left
-    } else {
+      speed =- maxSpeed; // Move left
+    // } else if (keysPressed.contains(LogicalKeyboardKey.shift)) ||
+    //   keysPressed.contains(LogicalKeyboardKey.shiftLeft){
+    //   speed = maxSpeed * 1.8; // Boost to the right
+     } else {
       speed = 0; // Stop when no keys are pressed
     }
 

@@ -23,4 +23,15 @@ class ScoreService {
         .limit(10)                          // Only return top 10 entries
         .snapshots();                       // Return a real-time stream
   }
+
+  // (Optional) Fetch scores for a specific player
+  Stream<QuerySnapshot> getPlayerHistory(String playerName) {
+    return scores
+        .where('player', isEqualTo: playerName)
+        .orderBy('timestamp', descending: true)
+        .snapshots();
+  }
+
+  // FirebaseFirestore.instance.collection('Speed');
+
 }

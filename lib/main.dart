@@ -1,10 +1,8 @@
-// Flutter core
 import 'package:flutter/material.dart';
-
-// Firebase core
 import 'package:firebase_core/firebase_core.dart';
+import 'package:jdm/car_list_screen.dart';
+import 'package:jdm/gamescreen.dart';
 
-// Your custom screens
 import 'startscreen.dart';          // Custom start screen UI
 import 'firebase_options.dart';     // Firebase configuration (auto-generated)
 
@@ -27,9 +25,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: '2D Racing Game',
-      debugShowCheckedModeBanner: false, // Removes the debug banner in the top-right
-      home: const StartScreen(),         // First screen shown when app starts
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const StartScreen(),
+        '/carlist': (context) => const CarListScreen(),
+        '/game': (context) => const GameScreen(),
+      },
     );
+
   }
 }

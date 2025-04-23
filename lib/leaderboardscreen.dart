@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // Firestore: used to stream real-time leaderboard data
 import 'package:cloud_firestore/cloud_firestore.dart';
 // Your custom score-fetching logic
-import 'scoreservice.dart';
+import 'leaderboard.dart';
 
 // This screen shows a live leaderboard of top scores from Firebase
 class LeaderboardScreen extends StatelessWidget {
@@ -12,7 +12,7 @@ class LeaderboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('🏁 Leaderboard'), // Top app bar title
+        title: const Text('Leaderboard'), // Top app bar title
       ),
 
       // StreamBuilder allows live updates from Firebase
