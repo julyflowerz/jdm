@@ -1,16 +1,13 @@
-import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
+import 'car_model.dart';
 
-Future<List<dynamic>> fetchCars() async {
-  final url = kIsWeb
-      ? Uri.parse('http://localhost:5168/api/cars')      // for Flutter Web
-      : Uri.parse('http://10.0.2.2:5168/api/cars');       // for Android Emulator
-
-  final response = await http.get(url);
+Future<List<Car>> fetchCars() async {
+  final response = await http.get(Uri.parse('http://10.0.2.2:5168/api/Cars')); // ✅ Update your IP/port if needed
 
   if (response.statusCode == 200) {
-    return jsonDecode(response.body);
+    final List<dynamic> data = jsonDecode(response.body);
+    return data.map((json) => Car.fromJson(json)).toList();
   } else {
     throw Exception('Failed to load cars');
   }

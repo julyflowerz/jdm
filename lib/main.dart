@@ -31,9 +31,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const StartScreen(),
         '/carlist': (context) => const CarListScreen(),
-        '/game': (context) => const GameScreen(),
+        //  removed '/game' route because GameScreen requires arguments
       },
     );
+
 
   }
 }
