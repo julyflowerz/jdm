@@ -24,6 +24,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  http: ^0.13.6
 
 
   flutter_lints: ^5.0.0
@@ -35,8 +36,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/background.gif
+    - assets/images/japan.gif
+    - assets/images/white.png
     - assets/images/mountains.png
-    - assets/images/start.png  # <-- fix from 'start.png'
+    - assets/images/start.png
     - assets/images/road.png
     - assets/images/supra.png
-    - assets/images/r34.png
+    - assets/images/skyline.png
+    - assets/images/civic.png
+    - assets/images/rx7.png

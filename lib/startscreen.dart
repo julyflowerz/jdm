@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'gamescreen.dart'; // Imports the main game screen to navigate to
+import 'car_selection_screen.dart';
 
 // StartScreen is a stateless widget shown when the app starts
 class StartScreen extends StatelessWidget {
@@ -24,8 +25,9 @@ class StartScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const GameScreen()),
+                  MaterialPageRoute(builder: (_) => const CarSelectionScreen()),
                 );
+
               },
               // The button is an image (styled like a "Start" graphic)
               child: Image.asset(

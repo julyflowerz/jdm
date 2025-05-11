@@ -12,7 +12,7 @@ class LeaderboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('🏁 Leaderboard'), // Top app bar title
+        title: const Text('Leaderboard'), // Top app bar title
       ),
 
       // StreamBuilder allows live updates from Firebase
@@ -42,11 +42,10 @@ class LeaderboardScreen extends StatelessWidget {
               final player = data['player'] ?? 'Unknown';
               final score = data['score'] ?? 0;
 
-              // Render a row in the leaderboard
               return ListTile(
-                leading: Text('#${index + 1}'),         // Position number
-                title: Text(player.toString()),         // Player name
-                trailing: Text(score.toString()),       // Score value
+                leading: Text('#${index + 1}'),
+                title: Text(player.toString()),
+                trailing: Text('${(score as num).toStringAsFixed(2)}s'), // ✅ shows as "3.55s"
               );
             },
           );

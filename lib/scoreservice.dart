@@ -8,7 +8,7 @@ class ScoreService {
   FirebaseFirestore.instance.collection('leaderboard');
 
   // Save a new score to the leaderboard
-  Future<void> submitScore(String playerName, int score) {
+  Future<void> submitScore(String playerName, double score) {
     return scores.add({
       'player': playerName,                       // Player name or ID
       'score': score,                             // Score value
@@ -19,9 +19,9 @@ class ScoreService {
   // Get a stream of the top 10 scores, sorted highest first
   Stream<QuerySnapshot> getTopScores() {
     return scores
-        .orderBy('score', descending: true) // Sort by score, highest first
-        .limit(10)                          // Only return top 10 entries
-        .snapshots();                       // Return a real-time stream
+        .orderBy('score', descending: false) // ✅ Lowest score = fastest time
+        .limit(10)
+        .snapshots();
   }
 
   // (Optional) Fetch scores for a specific player

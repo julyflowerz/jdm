@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
-import 'cargame.dart';             // Imports your main game logic (Flame game)
-import 'leaderboardscreen.dart'; // Imports the leaderboard Flutter screen
+import 'cargame.dart';             // Your custom Flame game class
+import 'leaderboardscreen.dart'; // The leaderboard screen
+import 'car_model.dart';          // Your Car model
 
-// The GameScreen is a full-screen widget that renders your Flame game
 class GameScreen extends StatelessWidget {
-  const GameScreen({super.key});
+  final Car selectedCar;
+
+  const GameScreen({super.key, required this.selectedCar});
 
   @override
   Widget build(BuildContext context) {
-    // Create an instance of your custom Flame game
-    final carGame = CarGame();
+    // Initialize the Flame game with the selected car
+    final carGame = CarGame(selectedCar);
 
-    // 🔁 Attach a callback that runs when the game ends
-    // Used to navigate to the leaderboard from inside the game
+    // Attach callback to move to leaderboard
     carGame.onGameFinished = () {
       Navigator.push(
         context,
@@ -23,9 +24,8 @@ class GameScreen extends StatelessWidget {
 
     return Scaffold(
       body: GameWidget(
-        game: carGame, // Embeds the Flame game inside a Flutter widget
+        game: carGame,
         overlayBuilderMap: {
-          // Optional overlays (not used here but ready for future use)
           'Leaderboard': (context, _) => const LeaderboardScreen(),
         },
       ),
