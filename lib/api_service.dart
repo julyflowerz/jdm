@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'car_model.dart';
 
 Future<List<Car>> fetchCars() async {
-  final response = await http.get(Uri.parse('https://localhost:7066/api/Cars')); // update to your API URL
+  final response = await http.get(Uri.parse('http://localhost:7066/api/Cars'));
 
   if (response.statusCode == 200) {
     final List<dynamic> jsonData = jsonDecode(response.body);
